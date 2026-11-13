@@ -284,3 +284,7 @@ Scripts:
 | `npm run build` | Compile TypeScript to `dist/` |
 | `npm start` | Run the compiled bot |
 | `npm run typecheck` | Check types without building |
+
+## License
+
+Licensed under the [GNU Affero General Public License v3.0](LICENSE).
