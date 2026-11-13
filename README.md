@@ -1,4 +1,4 @@
-# musi_bot
+# discord_music_bot
 
 A self-hosted Discord music bot written in TypeScript. It plays audio from YouTube links, playlists and search terms in a voice channel, using slash commands.
 
@@ -121,8 +121,8 @@ No privileged intents are needed.
 ## 2. Install
 
 ```sh
-git clone <your-repo-url> musi_bot
-cd musi_bot
+git clone <your-repo-url> discord_music_bot
+cd discord_music_bot
 npm install
 ```
 
@@ -189,14 +189,14 @@ If the file is missing, broken, or a value is out of range, the bot prints a war
 
 ### systemd (Linux)
 
-Create `~/.config/systemd/user/musi-bot.service`, replacing the paths with your own (`which node` shows the Node path):
+Create `~/.config/systemd/user/discord-music-bot.service`, replacing the paths with your own (`which node` shows the Node path):
 
 ```ini
 [Unit]
-Description=musi Discord music bot
+Description=Discord music bot
 
 [Service]
-WorkingDirectory=/home/YOU/musi_bot
+WorkingDirectory=/home/YOU/discord_music_bot
 ExecStart=/usr/bin/node --env-file=.env dist/index.js
 Restart=always
 RestartSec=10
@@ -210,16 +210,16 @@ Then:
 ```sh
 npm run build
 systemctl --user daemon-reload
-systemctl --user enable --now musi-bot
+systemctl --user enable --now discord-music-bot
 loginctl enable-linger "$USER"     # start at boot, without waiting for you to log in
 ```
 
 Useful commands:
 
 ```sh
-systemctl --user status musi-bot
-journalctl --user -u musi-bot -f       # live logs
-systemctl --user restart musi-bot
+systemctl --user status discord-music-bot
+journalctl --user -u discord-music-bot -f       # live logs
+systemctl --user restart discord-music-bot
 ```
 
 If Node was installed with nvm, use the full path to that Node binary in `ExecStart`, and add a line such as `Environment=PATH=/home/YOU/.nvm/versions/node/vXX/bin:/usr/local/bin:/usr/bin` so the service can find `yt-dlp` and `ffmpeg`.
@@ -229,7 +229,7 @@ If Node was installed with nvm, use the full path to that Node binary in `ExecSt
 ```sh
 npm install -g pm2
 npm run build
-pm2 start dist/index.js --name musi-bot --node-args="--env-file=.env"
+pm2 start dist/index.js --name discord-music-bot --node-args="--env-file=.env"
 pm2 save
 pm2 startup        # prints one sudo command; run it to start pm2 at boot
 ```
@@ -244,7 +244,7 @@ npm install
 npm run build
 ```
 
-Then restart the bot (`systemctl --user restart musi-bot` or `pm2 restart musi-bot`). Restart it as well after changing `config.json` or `.env`.
+Then restart the bot (`systemctl --user restart discord-music-bot` or `pm2 restart discord-music-bot`). Restart it as well after changing `config.json` or `.env`.
 
 ## Troubleshooting
 
