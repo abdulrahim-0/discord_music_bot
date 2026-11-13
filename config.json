@@ -1,0 +1,8 @@
+{
+  "idleLeaveMinutes": 5,
+  "playlistLimit": 100,
+  "audioBitrateKbps": 128,
+  "defaultRepeat": "off",
+  "queuePageSize": 10,
+  "maxConsecutiveFailures": 5
+}
