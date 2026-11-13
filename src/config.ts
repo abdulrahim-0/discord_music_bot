@@ -14,6 +14,8 @@ export interface Config {
   queuePageSize: number;
   /** After this many failed songs in a row the queue is cleared. */
   maxConsecutiveFailures: number;
+  /** Volume in percent the bot starts with (100 = original loudness). Change it live with /volume. */
+  defaultVolume: number;
 }
 
 const defaults: Config = {
@@ -23,14 +25,16 @@ const defaults: Config = {
   defaultRepeat: 'off',
   queuePageSize: 10,
   maxConsecutiveFailures: 5,
+  defaultVolume: 100,
 };
 
 const limits: Record<Exclude<keyof Config, 'defaultRepeat'>, [min: number, max: number]> = {
   idleLeaveMinutes: [0, 24 * 60],
   playlistLimit: [1, 1000],
   audioBitrateKbps: [8, 512],
-  queuePageSize: [1, 25],
+  queuePageSize: [1, 15],
   maxConsecutiveFailures: [1, 100],
+  defaultVolume: [1, 200],
 };
 
 function load(): Config {
